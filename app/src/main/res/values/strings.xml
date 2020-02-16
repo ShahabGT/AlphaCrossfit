@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Alpha Crossfit</string>
+    <string name="number_digits">0123456789</string>
+    <string name="birthday_digits">0123456789/</string>
 </resources>

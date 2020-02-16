@@ -6,4 +6,10 @@
     <color name="colorPrimaryDark2">#00574B</color>
     <color name="colorAccent">#64B5F6</color>
     <color name="colorAccent2">#D81B60</color>
+
+    <color name="purple">#512BB6</color>
+    <color name="yellow">#ffaf06</color>
+
+    <color name="mdtp_accent_color">#2196F3</color>
+    <color name="mdtp_accent_color_dark">#1976D2</color>
 </resources>
