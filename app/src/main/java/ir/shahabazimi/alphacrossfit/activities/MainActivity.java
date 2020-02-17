@@ -2,6 +2,7 @@ package ir.shahabazimi.alphacrossfit.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -33,6 +34,12 @@ public class MainActivity extends AppCompatActivity {
             dialog.show();
             Window window = dialog.getWindow();
             window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        });
+
+        findViewById(R.id.main_service).setOnClickListener(w->{
+            startActivity(new Intent(MainActivity.this,ServiceActivity.class));
+            overridePendingTransition(R.anim.fadein,R.anim.fadeout);
+
         });
 
 

@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="ir.shahabazimi.alphacrossfit">
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -15,6 +15,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".activities.ServiceActivity"></activity>
         <activity
             android:name=".activities.SplashActivity"
             android:screenOrientation="portrait">
@@ -27,7 +28,6 @@
         <activity
             android:name=".activities.MainActivity"
             android:screenOrientation="portrait" />
-
     </application>
 
 </manifest>

@@ -17,4 +17,11 @@ public interface Api {
             @Field("bday") String birthday,
             @Field("code") String code);
 
+
+    @FormUrlEncoded
+    @POST("search.php")
+    Call<GeneralResponse> search(
+            @Field("code") String code
+    );
+
 }
