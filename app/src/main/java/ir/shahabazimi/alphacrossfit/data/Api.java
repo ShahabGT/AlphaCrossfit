@@ -1,9 +1,11 @@
 package ir.shahabazimi.alphacrossfit.data;
 
 import ir.shahabazimi.alphacrossfit.models.GeneralResponse;
+import ir.shahabazimi.alphacrossfit.models.PointsResponse;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface Api {
@@ -39,6 +41,33 @@ public interface Api {
     @POST("sendsms.php")
     Call<GeneralResponse> sendsms(
             @Field("text") String text
+    );
+
+    @GET("getpoints.php")
+    Call<PointsResponse> getpoints();
+
+
+    @FormUrlEncoded
+    @POST("setpoints.php")
+    Call<GeneralResponse> setpoints(
+            @Field("point") String point,
+            @Field("wallet") String wallet,
+            @Field("point2") String point2
+
+    );
+
+    @FormUrlEncoded
+    @POST("getuserpoints.php")
+    Call<GeneralResponse> getuserpoints(
+            @Field("code") String code
+    );
+
+    @FormUrlEncoded
+    @POST("setuserpoints.php")
+    Call<GeneralResponse> setuserpoints(
+            @Field("user_id") String userId,
+            @Field("points") String points
+
     );
 
 }

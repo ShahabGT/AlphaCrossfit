@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.Gravity;
 import android.view.Window;
 import android.view.WindowManager;
@@ -44,6 +45,12 @@ public class MainActivity extends AppCompatActivity {
 
         findViewById(R.id.main_message).setOnClickListener(w->{
             startActivity(new Intent(MainActivity.this,MessageActivity.class));
+            overridePendingTransition(R.anim.fadein,R.anim.fadeout);
+
+        });
+
+        findViewById(R.id.main_setting).setOnClickListener(w->{
+            startActivity(new Intent(MainActivity.this, SettingActivity.class));
             overridePendingTransition(R.anim.fadein,R.anim.fadeout);
 
         });
