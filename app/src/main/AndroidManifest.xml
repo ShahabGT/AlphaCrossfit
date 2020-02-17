@@ -15,7 +15,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activities.ServiceActivity"></activity>
+        <activity android:name=".activities.MessageActivity"></activity>
+        <activity android:name=".activities.ServiceActivity" />
         <activity
             android:name=".activities.SplashActivity"
             android:screenOrientation="portrait">

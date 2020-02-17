@@ -42,6 +42,12 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
+        findViewById(R.id.main_message).setOnClickListener(w->{
+            startActivity(new Intent(MainActivity.this,MessageActivity.class));
+            overridePendingTransition(R.anim.fadein,R.anim.fadeout);
+
+        });
+
 
     }
 }

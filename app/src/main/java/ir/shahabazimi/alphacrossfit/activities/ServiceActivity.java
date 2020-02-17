@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -24,9 +25,11 @@ import ir.shahabazimi.alphacrossfit.classes.Utils;
 import ir.shahabazimi.alphacrossfit.data.RetrofitClient;
 import ir.shahabazimi.alphacrossfit.dialogs.ConfirmDialog;
 import ir.shahabazimi.alphacrossfit.models.GeneralResponse;
+import okhttp3.internal.Util;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class ServiceActivity extends AppCompatActivity {
 
@@ -38,6 +41,7 @@ public class ServiceActivity extends AppCompatActivity {
     private String cId = "";
     private String cWallet = "";
     private String cCode = "";
+    private LinearLayout loading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +58,8 @@ public class ServiceActivity extends AppCompatActivity {
         length = findViewById(R.id.service_length);
 
         reg = findViewById(R.id.service_reg);
+
+        loading = findViewById(R.id.service_loading);
 
         lenghtType = findViewById(R.id.service_length_spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -74,7 +80,7 @@ public class ServiceActivity extends AppCompatActivity {
 
             if (p.isEmpty() || t.isEmpty() || l.isEmpty()) {
 
-                Toast.makeText(this, "لطفا لیست خدمات را کامل کنید", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "لطفا مشخصات دوره را کامل کنید", Toast.LENGTH_SHORT).show();
             } else if (cId.isEmpty()) {
                 Toast.makeText(this, "لطفا شماره مشتری را وارد کنید", Toast.LENGTH_SHORT).show();
 
@@ -83,7 +89,11 @@ public class ServiceActivity extends AppCompatActivity {
                 ConfirmDialog dialog = new ConfirmDialog(ServiceActivity.this, cCode, cName, cWallet, p, new ConfirmInterface() {
                     @Override
                     public void onClick(String amount, String wallet, String pay) {
-                       // buy(amount, wallet, pay);
+                        if(Utils.checkInternet(ServiceActivity.this))
+                            buy(amount, wallet, pay);
+                        else
+                            Toast.makeText(ServiceActivity.this, "لطفا دسترسی به اینترنت را بررسی کنید!", Toast.LENGTH_SHORT).show();
+
                     }
                 });
                 dialog.setCanceledOnTouchOutside(true);
@@ -205,6 +215,44 @@ public class ServiceActivity extends AppCompatActivity {
 
                     }
                 });
+    }
+
+    private void buy(String total,String wallet,String pay){
+        loading.setVisibility(View.VISIBLE);
+        RetrofitClient.getInstance().getApi()
+                .buy(cId,total,wallet,pay,type.getText().toString(),length.getText().toString(),lenghtType.getSelectedItem().toString())
+                .enqueue(new Callback<GeneralResponse>() {
+                    @Override
+                    public void onResponse(Call<GeneralResponse> call, Response<GeneralResponse> response) {
+                        if(response.isSuccessful() && response.body()!=null){
+                            loading.setVisibility(View.GONE);
+
+                            if(response.body().getMessage().equals("success")){
+                                Toast.makeText(ServiceActivity.this, "با موفیقت ثبت شد!", Toast.LENGTH_SHORT).show();
+                                onBackPressed();
+                            }else{
+                                Toast.makeText(ServiceActivity.this, "خطا! لطفا دوباره امتحان کنید", Toast.LENGTH_SHORT).show();
+                            }
+
+
+                        }else{
+                            Toast.makeText(ServiceActivity.this, "خطا! لطفا دوباره امتحان کنید", Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<GeneralResponse> call, Throwable t) {
+                        loading.setVisibility(View.GONE);
+
+                        Toast.makeText(ServiceActivity.this, "خطا! لطفا دوباره امتحان کنید", Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+
+
+
+
     }
 
 }

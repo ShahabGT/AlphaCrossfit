@@ -24,4 +24,21 @@ public interface Api {
             @Field("code") String code
     );
 
+    @FormUrlEncoded
+    @POST("buy.php")
+    Call<GeneralResponse> buy(
+            @Field("user_id") String userId,
+            @Field("amount") String total,
+            @Field("wallet") String wallet,
+            @Field("pay") String pay,
+            @Field("type") String type,
+            @Field("length") String length,
+            @Field("length_type") String lengthType);
+
+    @FormUrlEncoded
+    @POST("sendsms.php")
+    Call<GeneralResponse> sendsms(
+            @Field("text") String text
+    );
+
 }
