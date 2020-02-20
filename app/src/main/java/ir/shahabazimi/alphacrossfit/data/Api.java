@@ -2,6 +2,7 @@ package ir.shahabazimi.alphacrossfit.data;
 
 import ir.shahabazimi.alphacrossfit.models.GeneralResponse;
 import ir.shahabazimi.alphacrossfit.models.PointsResponse;
+import ir.shahabazimi.alphacrossfit.models.StatResponse;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -68,6 +69,19 @@ public interface Api {
             @Field("user_id") String userId,
             @Field("points") String points
 
+    );
+
+    @FormUrlEncoded
+    @POST("getstats.php")
+    Call<StatResponse> getstats(
+            @Field("year") String year
+    );
+
+    @FormUrlEncoded
+    @POST("getmonth.php")
+    Call<StatResponse> getmonth(
+            @Field("year") String year,
+            @Field("month") String month
     );
 
 }

@@ -11,7 +11,7 @@
         style="@style/TextAppearance.AppCompat.Display1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-black"
+        android:fontFamily="@font/vazir"
         android:text="تنظیمات"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toTopOf="@id/guideline"
@@ -184,7 +184,7 @@
                     android:fontFamily="@font/vazir"
                     android:inputType="number"
                     android:maxLength="6"
-                    android:nextFocusDown="@id/service_type"
+                    android:nextFocusDown="@id/setting_userpoints_new"
                     android:padding="16dp"
                     android:singleLine="true" />
 
@@ -246,6 +246,16 @@
                     android:singleLine="true" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
+            <View
+                android:focusable="true"
+                android:clickable="true"
+                app:layout_constraintBottom_toBottomOf="@+id/setting_userpoints_title"
+                app:layout_constraintTop_toTopOf="@+id/setting_userpoints_title"
+                app:layout_constraintRight_toRightOf="@+id/setting_userpoints_title"
+                app:layout_constraintLeft_toLeftOf="@+id/setting_userpoints_title"
+                android:layout_width="0dp"
+                android:layout_height="0dp"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/setting_userpoints_title2"

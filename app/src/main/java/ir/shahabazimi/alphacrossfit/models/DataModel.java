@@ -5,6 +5,7 @@ public class DataModel {
     private int id;
     private String sum;
     private String count;
+    private String name;
 
     public int getId() {
         return id;
@@ -16,5 +17,9 @@ public class DataModel {
 
     public String getCount() {
         return count;
+    }
+
+    public String getName() {
+        return name;
     }
 }
