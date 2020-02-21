@@ -1,5 +1,6 @@
 package ir.shahabazimi.alphacrossfit.data;
 
+import ir.shahabazimi.alphacrossfit.models.DetailsResponse;
 import ir.shahabazimi.alphacrossfit.models.GeneralResponse;
 import ir.shahabazimi.alphacrossfit.models.PointsResponse;
 import ir.shahabazimi.alphacrossfit.models.StatResponse;
@@ -80,6 +81,13 @@ public interface Api {
     @FormUrlEncoded
     @POST("getmonth.php")
     Call<StatResponse> getmonth(
+            @Field("year") String year,
+            @Field("month") String month
+    );
+
+    @FormUrlEncoded
+    @POST("getdetails.php")
+    Call<DetailsResponse> getdetails(
             @Field("year") String year,
             @Field("month") String month
     );

@@ -111,7 +111,7 @@ public class MonthActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<StatResponse> call, Response<StatResponse> response) {
                         if(response.isSuccessful()&& response.body()!=null){
-                            adapter = new MonthAdapter(MonthActivity.this,response.body().getData());
+                            adapter = new MonthAdapter(MonthActivity.this,response.body().getData(),year,month);
                             recyclerView.setLayoutManager(new LinearLayoutManager(MonthActivity.this));
                             recyclerView.setAdapter(adapter);
                         }else{
