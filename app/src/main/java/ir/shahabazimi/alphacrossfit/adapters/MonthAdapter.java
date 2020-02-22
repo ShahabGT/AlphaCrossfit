@@ -52,6 +52,7 @@ public class MonthAdapter extends RecyclerView.Adapter<MonthAdapter.ViewHolder> 
                 in.putExtra("month",month);
                 in.putExtra("year",year);
                 in.putExtra("eyear",eyear);
+                in.putExtra("name",model.getName());
                 context.startActivity(in);
         });
     }

@@ -89,7 +89,8 @@ public interface Api {
     @POST("getdetails.php")
     Call<DetailsResponse> getdetails(
             @Field("year") String year,
-            @Field("month") String month
+            @Field("month") String month,
+            @Field("name") String name
     );
 
 }

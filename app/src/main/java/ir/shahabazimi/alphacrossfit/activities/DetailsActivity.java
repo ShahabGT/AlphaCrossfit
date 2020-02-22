@@ -20,7 +20,7 @@ import retrofit2.Response;
 public class DetailsActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private String month,year,eyear;
+    private String month,year,eyear,name;
     private DetailsAdapter adapter;
     private boolean allUsers =false;
 
@@ -44,6 +44,7 @@ public class DetailsActivity extends AppCompatActivity {
             month = b.getString("month","");
             year = b.getString("year","");
             eyear = b.getString("eyear","");
+            name = b.getString("name","");
 
             if(month.equals("14"))
                 allUsers=true;
@@ -55,7 +56,7 @@ public class DetailsActivity extends AppCompatActivity {
     private void getData(){
 
         RetrofitClient.getInstance().getApi()
-                .getdetails(eyear,month)
+                .getdetails(eyear,month,name)
                 .enqueue(new Callback<DetailsResponse>() {
                     @Override
                     public void onResponse(Call<DetailsResponse> call, Response<DetailsResponse> response) {

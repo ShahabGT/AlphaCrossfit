@@ -62,4 +62,59 @@ public class DetailsModel {
     private String date;
 
 
+    public String getUserId() {
+        return userId;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public String getUserCode() {
+        return userCode;
+    }
+
+    public String getUserNumber() {
+        return userNumber;
+    }
+
+    public String getUser_bday() {
+        return user_bday;
+    }
+
+    public String getUserReg() {
+        return userReg;
+    }
+
+    public String getBuyId() {
+        return buyId;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public String getWallet() {
+        return wallet;
+    }
+
+    public String getPay() {
+        return pay;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getLength() {
+        return length;
+    }
+
+    public String getLenghtType() {
+        return lenghtType;
+    }
+
+    public String getDate() {
+        return date;
+    }
 }

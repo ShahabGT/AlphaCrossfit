@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import ir.shahabazimi.alphacrossfit.R;
+import ir.shahabazimi.alphacrossfit.activities.DetailsActivity;
 import ir.shahabazimi.alphacrossfit.activities.MonthActivity;
 import ir.shahabazimi.alphacrossfit.classes.Utils;
 import ir.shahabazimi.alphacrossfit.models.DataModel;
@@ -94,11 +95,21 @@ public class YearAdapter extends RecyclerView.Adapter<YearAdapter.ViewHolder> {
 
         h.itemView.setOnClickListener(w->{
             if(Integer.parseInt(model.getCount())>0) {
-                Intent in = new Intent(context, MonthActivity.class);
-                in.putExtra("month",model.getId()+"");
-                in.putExtra("year",year);
-                in.putExtra("eyear",eyear);
-                context.startActivity(in);
+                if(model.getId()==14){
+                    Intent in = new Intent(context, DetailsActivity.class);
+                    in.putExtra("month",model.getId()+"");
+                    in.putExtra("year",year);
+                    in.putExtra("eyear",eyear);
+                    in.putExtra("name","all");
+                    context.startActivity(in);
+                }else{
+                    Intent in = new Intent(context, MonthActivity.class);
+                    in.putExtra("month",model.getId()+"");
+                    in.putExtra("year",year);
+                    in.putExtra("eyear",eyear);
+                    context.startActivity(in);
+                }
+
             }
 
         });
